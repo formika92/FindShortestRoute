@@ -147,11 +147,11 @@ dict_points = {
 }
 
 if __name__ == '__main__':
-    values_points = dict_points.values()
+    values_points = list(dict_points.values())
 
     # отделяем начальную точку от остальных
-    intermed_points = list(values_points)[1:]
-    start_point = list(values_points)[:1]
+    intermed_points = values_points[1:]
+    start_point = values_points[:1]
 
     FindDistance().print_min_router(
         intermed_points=intermed_points,
