@@ -92,6 +92,11 @@ class FindDistance:
 
                 num -= 1
 
+            #  тут мы не учитываем, что у нас может быть 2 маршрута 
+            #  с одинаковым расстоянием,
+            #  и тогда мы выведем первый найденный минимальный,
+            #  также второй минимальный маршрут
+            #  это найденный минимальный в обратном направлении
             if distance < min_distance:
                 min_distance = distance
                 min_router = router
@@ -114,11 +119,9 @@ class FindDistance:
             end_point=end_point,
         )
 
-        len_router = len(min_router)
-
         # записываем в переменную начало строки
         string = f'{min_router[0]} -> {min_router[1]}[{min_router[2]}]'
-        for index in range(2, len_router - 2, 2):
+        for index in range(2, len(min_router) - 2, 2):
             string += f'-> {min_router[index + 1]}[{min_router[index + 2]}]'
         # записываем в переменную конец строки
         string += f'= {min_router[-1]}'
